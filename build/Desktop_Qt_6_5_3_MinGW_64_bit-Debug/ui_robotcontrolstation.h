@@ -11,6 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFormLayout>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
@@ -22,6 +24,8 @@ class Ui_RobotControlStation
 {
 public:
     QWidget *centralwidget;
+    QFormLayout *formLayout;
+    QListWidget *listWidget;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -32,6 +36,13 @@ public:
         RobotControlStation->resize(800, 600);
         centralwidget = new QWidget(RobotControlStation);
         centralwidget->setObjectName("centralwidget");
+        formLayout = new QFormLayout(centralwidget);
+        formLayout->setObjectName("formLayout");
+        listWidget = new QListWidget(centralwidget);
+        listWidget->setObjectName("listWidget");
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, listWidget);
+
         RobotControlStation->setCentralWidget(centralwidget);
         menubar = new QMenuBar(RobotControlStation);
         menubar->setObjectName("menubar");
